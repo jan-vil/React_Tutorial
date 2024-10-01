@@ -7,9 +7,10 @@ import { /*Això importa funcions del react-router-dom */
 } from "react-router-dom";
 
 import "./index.css";
-import Root from "./routes/root";
+import Root, { loader as rootLoader } from "./routes/root";
 import ErrorPage from "./error-page";
 import Contact from "./routes/contact";
+
 
 
 
@@ -18,7 +19,8 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
-    children: [
+    loader: rootLoader,
+    children: [ //children permet fer una nested route. En aquest cas, veurem els contactes al costat de la dreta.
       {
         path: "contacts/:contactId",
         element: <Contact />,
